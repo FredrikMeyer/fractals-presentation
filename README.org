@@ -1,0 +1,34 @@
+
+Link here:
+
+[[https://fredrikmeyer.net/fractals-presentation/][https://fredrikmeyer.net/fractals-presentation/]]
+
+** Relevant links
+
+
+[[https://www.fractalus.com/kerry/articles/manifesto/fa-manifesto.html][Fractal Art Manifesto]]
+
+[[https://www.fractalus.com/kerry/articles/area/mandelbrot-area.html][Area of mandelbrot]]
+
+*** Mandelbrot
+
+[[https://www.math.univ-toulouse.fr/~cheritat/wiki-draw/index.php/Mandelbrot_set][Algorithms for plotting the Mandelbrot sete]]
+
+[[https://scipython.com/book2/chapter-8-scipy/examples/the-newton-fractal/][Newton fractal in Pyhon]]
+[[https://www.chiark.greenend.org.uk/~sgtatham/newton/][Fractals derived from Newton's method]]
+
+[[https://paulbourke.net/fractals/newtonraphson/][Paul Bourke's gallery of Newton fractals]]
+
+*** IFS
+
+[[https://github.com/FredrikMeyer/ifs-editor][IFS editor source code]]
+
+
+
+*** Abelian Sandpiles
+
+[[https://doc.sagemath.org/html/en/thematic_tutorials/sandpile.html#introduction][Abelian Sandpiles in SAGE]]
+
+[[https://arxiv.org/pdf/1401.0354.pdf][Surver paper about sandpiles]]
+
+[[https://github.com/FredrikMeyer/abeliansandpile/][My own implementation of sandpiles]]
