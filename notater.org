@@ -1,0 +1,25 @@
+#+TITLE: Fraktaler
+
+* Ideer
+
+** Generelt om programmering på fritiden
+
+** Kombinasjonen matematikk og programmering
+
+Gøy med grafikk
+
+*** Indra's Pearls
+
+
+#+DOWNLOADED: https://m.media-amazon.com/images/I/51YXPT8ZVCL.jpg @ 2023-10-14 19:08:09
+[[file:Ideer/2023-10-14_19-08-08_51YXPT8ZVCL.jpg]]
+
+
+
+** Mandelbrot
+
+** IFS
+
+** Abelian Sandpile
+
+Definisjon + animasjon? For nå, finn animasjon på nett.

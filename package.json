@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@types/reveal.js": "^4.4.3",
+    "reveal.js": "^4.6.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "vite": "^4.4.11"
+  }
+}

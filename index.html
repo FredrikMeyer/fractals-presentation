@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fractals etc</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Fractals etc</h2>
+          <img class="r-stretch" src="math_tree.png" />
+          <p>Fredrik Meyer (19/10-2023)</p>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Something beautiful</h2>
+          <h2 class="r-fit-text">
+            in the intersection of math and programming
+          </h2>
+          <div class="beautiful">
+            <div>
+              <img
+                src="./math_beauty.png"
+                alt="Photo of a male mathematician sitting at a desk, intently focused on his computer screen. Beside him are books about advanced mathematics and programming. On the computer screen, there's a visualization of a complex mathematical structure that glows in vibrant colors."
+              />
+            </div>
+            <div>
+              <img src="./indras_pearls.jpg" />
+            </div>
+            <div>
+              <img src="./indra_2.jpg" />
+            </div>
+          </div>
+          <p>Also motivating with visual feedback and deep problems.</p>
+        </section>
+
+        <section>
+          <h2>What are fractals?</h2>
+          <div class="beautiful">
+            <div>
+              <ul>
+                <li class="fragment" data-fragment-index="1">
+                  Self similarity
+                </li>
+                <li class="fragment" data-fragment-index="2">
+                  Detailed at all scales
+                </li>
+                <li class="fragment" data-fragment-index="3">
+                  Tendencies to chaos
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="r-stack">
+                <img
+                  class="fragment"
+                  alt="Pictures from here https://www.treehugger.com/amazing-fractals-found-in-nature-4868776"
+                  data-fragment-index="1"
+                  src="./fractal_nature.jpg"
+                />
+                <img
+                  class="fragment"
+                  data-fragment-index="2"
+                  src="./romanesco.jpg"
+                />
+                <img
+                  class="fragment"
+                  data-fragment-index="3"
+                  src="./copper.jpg"
+                />
+                <img
+                  class="fragment"
+                  data-fragment-index="4"
+                  src="./foam.jpg"
+                />
+              </div>
+            </div>
+          </div>
+          <p class="fragment" data-fragment-index="4">
+            No precise definition covering all use cases exist.
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Mandelbrot</h2>
+            <img class="r-stretch" src="mandelbrot1.png" />
+            <p>After Benoit Mandlbrot (1924-2010)</p>
+          </section>
+          <section>
+            <p>
+              Define a sequence $\{z_n\}$ by $z_{n+1}=z_n^2+c$. Then the
+              <i>Mandelbrot set</i> is defined as the set of $c$'s in the
+              complex plane such that $z_n \not \to \infty$.
+            </p>
+            <iframe
+              width="100%"
+              height="698"
+              frameborder="0"
+              src="https://observablehq.com/embed/@mcmcclur/julia-sets-and-the-mandelbrot-set?cells=widget"
+            ></iframe>
+          </section>
+
+          <section>
+            <h2>Demo Time 🥰</h2>
+            <p>
+              <a
+                href="https://github.com/FredrikMeyer/processing/blob/master/mandelbrot/mandelbrot.pde"
+                >Mandelbrot-simulation</a
+              >
+              from back in the day. (remember to also check out the
+              <a href="https://paulbourke.net/fractals/burnship/"
+                >burning ship fractal</a
+              >)
+            </p>
+            <pre>
+            <code data-trim><script type="text/template">
+double checkMandelbrot(int i, int j, int noIterations) {
+  Complex c = toComplex(new double[]{i, j});
+  double p = Math.sqrt(Math.pow((c.x-0.25), 2)+c.y*c.y);
+  if ((c.x < p - 2*p*p+0.25) && (Math.pow((c.x+1), 2)+c.y*c.y) < 1./16) {
+    return 0;
+  }
+  Complex z = new Complex(0, 0);
+  double k = 0;
+  while (k < noIterations) {
+    z = iterate(z, c);
+    if (z.normSquared() >= 4) {
+      break;
+    }
+    k++;
+  }
+  if (k < noIterations) {
+    double logzn = Math.log(z.norm()*z.norm());
+    double nu = Math.log(logzn / Math.log(2))/Math.log(2);
+    k = k + 1 - nu;
+  }
+  double color1 = Math.floor(k);
+  double color2 = Math.floor(k)+1;
+  double fracPart = k % 1;
+  if (k == noIterations) {
+    return 0;
+  }
+  return Math.log(((color2-color1)*fracPart + color1));
+}
+            </script></code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>IFS - Iterated Function Systems</h2>
+            <p class="fragment">
+              A set of contraction mappings \[ \left\{ f_i: \mathbb R^2 \to
+              \mathbb R ^2 \mid i=1,2,\ldots,N \right \}\] This gives us a
+              fractal that can be thought of as a "fix point": \[ S = \overline
+              {\bigcup_{i=1}^N f_i(S)} \]
+            </p>
+          </section>
+
+          <section>
+            <h2>Some examples</h2>
+            <div class="r-stack">
+              <img src="./ifs_fern.gif" alt="Barnsley Fern" />
+              <img class="fragment" src="./ifs_chaos.gif" alt="Chaos" />
+              <img class="fragment" src="./ifs_dragon.gif" alt="IFS Dragon" />
+              <img
+                class="fragment"
+                src="./ifs_gallery.gif"
+                alt="Gallery of IFS"
+              />
+            </div>
+            <p class="fragment">
+              Many examples here:
+              <a href="https://paulbourke.net/fractals/ifs/">Paul Bourke</a>
+              (the page is a treasure trove)
+            </p>
+          </section>
+
+          <section>
+            <h2>Demo time 🥰</h2>
+            <p>
+              Can generate pictures by starting with a point and iterating
+              randomly.
+            </p>
+            <img class="r-stretch" src="./ifseditor.png" />
+            <p class="fragment">
+              <a href="https://fredrikmeyer.net/ifs-editor/">IFS Editor</a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Abelian Sandpiles</h2>
+            <p>Start with a pile of sand</p>
+            <img src="./steps_sandpile.png" class="r-stretch" />
+            <p>
+              See
+              <a href="https://en.wikipedia.org/wiki/Abelian_sandpile_model"
+                >Wikipedia</a
+              >
+              and
+              <a
+                href="https://nautil.us/the-math-of-the-amazing-sandpile-238320/"
+                >this nice Nautilus</a
+              >
+              article.
+            </p>
+          </section>
+
+          <section>
+            <h2>
+              In
+              <a
+                href="https://github.com/FredrikMeyer/abeliansandpile/tree/main"
+                >Rust</a
+              >
+            </h2>
+            <img src="./sandpile1.png" />
+            <p>Show different starting points</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Conclusion</h2>
+          <ul>
+            <li class="fragment">Fun</li>
+            <li class="fragment">Learning (some algorithms are slow)</li>
+            <li class="fragment">Math is beautiful</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Takk for alt!</h2>
+          <p>
+            My last fagdag-talk (in a while!?) 🥺 It has been really fun to get
+            to know you all, and I really hope our paths will continue crossing.
+          </p>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
